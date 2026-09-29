@@ -29,8 +29,7 @@ app.post('/webhook', async (req, res) => {
       } else if (text.includes('2') || text.includes('כתובת')) {
         reply = 'הכתובת שלנו: תעדכן אותי ואשנה כאן';
       } else {
-        reply = היי! 👋\nתכתוב:\n1 - שעות פתיחה\n2 - כתובת\n3 - לדבר עם נציג;
-      }
+reply = "היי! 👋\nתכתוב:\n1 - שעות פתיחה\n2 - כתובת\n3 - לדבר עם נציג";      }
       await axios.post(https://graph.facebook.com/v20.0/${PHONE_ID}/messages, {
         messaging_product: "whatsapp",
         to: from,
