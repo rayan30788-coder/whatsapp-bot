@@ -22,7 +22,7 @@ function sendMenu(to) {
     type: "interactive",
     interactive: {
       type: "button",
-      body: { text: "ברוך הבא לשירות הלקוחות 👋\n\n⚠️ שים לב: לא ניתן לבצע הזמנות בהתכתבות.\nההזמנות מתבצעות באתר ובאפליקציה בלבד.\n\nמספר זה מיועד לתלונות ובירורים בלבד." },
+      body: { text: "ברוך הבא ל- Alhana 👋\n\n⚠️ שים לב: לא ניתן לבצע הזמנות בהתכתבות.\nההזמנות מתבצעות באתר ובאפליקציה בלבד.\n\nמספר זה מיועד לתלונות ובירורים בלבד." },
       action: {
         buttons: [
           { type: "reply", reply: { id: "orders", title: "🛒 איך מזמינים?" } },
@@ -52,11 +52,11 @@ app.post('/webhook', async (req, res) => {
     const buttonId = msg.interactive?.button_reply?.id || text.toLowerCase();
 
     if (buttonId === "orders" || text.includes("הזמנה")) {
-      await sendMessage(from, "🛒 *הבהרה חשובה*\n\nלא ניתן לבצע הזמנות דרך הוואטסאפ.\n\nההזמנות מתבצעות:\n✅ באתר הרשמי בלבד\n✅ באפליקציה הרשמית בלבד\n\nמספר וואטסאפ זה מיועד ל *תלונות ובירורים* בלבד.\n\nתודה על ההבנה 🙏");
+      await sendMessage(from, "🛒 *הבהרה חשובה - Alhana*\n\nלא ניתן לבצע הזמנות דרך הוואטסאפ.\n\nההזמנות מתבצעות אך ורק כאן:\n🔗 אתר: https://alhana.online\n📱 אפליקציה: חפשו Alhana בחנות\n\nמספר וואטסאפ זה מיועד ל *תלונות ובירורים* בלבד.\nתודה על ההבנה 🙏");
     } else if (buttonId === "hours") {
-      await sendMessage(from, "🕘 שעות מענה בוואטסאפ:\nא'-ה' 09:00-18:00\nו' 09:00-14:00");
+      await sendMessage(from, "🕘 שעות מענה בוואטסאפ (תלונות/בירורים):\nא'-ה' 09:00-18:00\nו' 09:00-14:00");
     } else if (buttonId === "human") {
-      await sendMessage(from, "👨‍💼 נשמח לעזור!\nאנא כתוב את פנייתך (תלונה / בירור) בצורה מפורטת כולל מספר הזמנה אם יש, ונחזור אליך בהקדם.");
+      await sendMessage(from, "👨‍💼 צוות Alhana כאן לעזור!\nאנא כתוב את פנייתך בצורה מפורטת כולל מספר הזמנה אם יש, ונחזור אליך בהקדם.\n\nשוב מזכירים: לא ניתן להזמין דרך הצ'אט, רק דרך https://alhana.online");
     } else {
       await sendMenu(from);
     }
@@ -67,5 +67,5 @@ app.post('/webhook', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => res.send('Support Bot is running ✅'));
+app.get('/', (req, res) => res.send('Alhana Support Bot is running ✅'));
 app.listen(process.env.PORT || 10000, () => console.log('Server running'));
